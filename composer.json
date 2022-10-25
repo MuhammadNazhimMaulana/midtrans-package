@@ -1,0 +1,21 @@
+{
+    "name": "bonevian/midtrans",
+    "description": "Simple Package For Consuming Midtrans",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bonevian\\Midtrans\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MuhammadNazhimMaulana",
+            "email": "nazhimmaulanamuhammad@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}
