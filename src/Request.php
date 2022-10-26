@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\RequestException;
 
 class Request {
 
-    public function req(string $serverKey, string $method, string $path){
+    public function req(string $serverKey, string $method, string $path, array $payload = []){
         try {
             // Preparing Base Uri
             $client = new Client([
@@ -18,7 +18,7 @@ class Request {
                 ]
             ]);
             
-            $response = $client->request($method, $path);
+            $response = $client->request($method, $path, $payload);
 
             $data = (string) $response->getBody();
 

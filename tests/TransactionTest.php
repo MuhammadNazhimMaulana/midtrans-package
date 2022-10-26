@@ -20,7 +20,32 @@ final class TransactionTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->serverKey = 'server_key';
+        $this->serverKey = 'SB-Mid-server-TQY02mTXOhm-WoCWAKLNj8LX';
+    }
+
+    /**
+     * @group testTransactionCreate
+     */
+    public function testTransactionCreate()
+    {
+        $request = new MidtransApi();
+
+        $json = '{
+            "payment_type": "bank_transfer",
+            "bank_transfer": {
+              "bank": "permata"
+            },
+            "transaction_details": {
+              "order_id": "'.time().'",
+              "gross_amount": 145000
+            }
+          }';
+
+        $payload = json_decode($json, true);
+
+        // Return the value to returns.log
+        error_log($request->transactionCreate($this->serverKey, 'charge', $payload), 3, "returns.log");
+        $this->assertNotNull($request->transactionCreate($this->serverKey, 'charge', $payload));
     }
 
     /**
@@ -31,7 +56,7 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->transactionCheck($this->serverKey, 'order_id/status'), 3, "returns.log");
-        $this->assertNotNull($request->transactionCheck($this->serverKey, 'order_id/status'));
+        error_log($request->transactionCheck($this->serverKey, '1109636026/status'), 3, "returns.log");
+        $this->assertNotNull($request->transactionCheck($this->serverKey, '1109636026/status'));
     }
 }
