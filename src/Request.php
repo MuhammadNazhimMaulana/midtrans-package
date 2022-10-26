@@ -15,6 +15,9 @@ class Request {
                 'auth' => [
                     $serverKey,
                     ''
+                ],
+                'headers' => [
+                    'Accept' => 'application/json'
                 ]
             ]);
             

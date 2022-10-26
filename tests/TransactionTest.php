@@ -20,7 +20,7 @@ final class TransactionTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->serverKey = 'SB-Mid-server-TQY02mTXOhm-WoCWAKLNj8LX';
+        $this->serverKey = 'server_key';
     }
 
     /**
@@ -46,6 +46,18 @@ final class TransactionTest extends TestCase
         // Return the value to returns.log
         error_log($request->transactionCreate($this->serverKey, 'charge', $payload), 3, "returns.log");
         $this->assertNotNull($request->transactionCreate($this->serverKey, 'charge', $payload));
+    }
+
+    /**
+     * @group testTransactionCancel
+     */
+    public function testTransactionCancel()
+    {
+        $request = new MidtransApi();
+
+        // Return the value to returns.log
+        error_log($request->transactionCancel($this->serverKey, '1666772553/cancel'), 3, "returns.log");
+        $this->assertNotNull($request->transactionCancel($this->serverKey, '1666772553/cancel'));
     }
 
     /**

@@ -11,13 +11,19 @@ class MidtransApi {
         $request = new Request();
 
         $data = [
-            'headers' => [
-                'Accept' => 'application/json',
-            ],
             'json' => $payload
         ];
 
         $response = $request->req($serverKey, 'POST', $endpoint, $data);
+
+        return $response;
+    }
+
+    // Checking Transaction
+    public function transactionCancel(string $serverKey, string $endpoint){
+        $request = new Request();
+
+        $response = $request->req($serverKey, 'POST', $endpoint);
 
         return $response;
     }
