@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bonevian\Midtrans\Test;
 
 use PHPUnit\Framework\TestCase;
-use Bonevian\Midtrans\Request;
+use Bonevian\Midtrans\MidtransApi;
 
 final class TransactionTest extends TestCase
 {
@@ -28,10 +28,10 @@ final class TransactionTest extends TestCase
      */
     public function testTransactionStatus()
     {
-        $request = new Request();
+        $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->req($this->serverKey, 'GET', 'order_id/status'), 3, "returns.log");
-        $this->assertNotNull($request->req($this->serverKey, 'GET', 'order_id/status'));
+        error_log($request->transactionCheck($this->serverKey, 'order_id/status'), 3, "returns.log");
+        $this->assertNotNull($request->transactionCheck($this->serverKey, 'order_id/status'));
     }
 }
