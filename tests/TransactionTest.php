@@ -80,7 +80,19 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->transactionCheck($this->serverKey, '1109636026/status'), 3, "returns.log");
-        $this->assertNotNull($request->transactionCheck($this->serverKey, '1109636026/status'));
+        error_log($request->testTransactionStatus($this->serverKey, '1109636026/status'), 3, "returns.log");
+        $this->assertNotNull($request->testTransactionStatus($this->serverKey, '1109636026/status'));
+    }
+
+    /**
+     * @group testTransactionStatusB2B
+     */
+    public function testTransactionStatusB2B()
+    {
+        $request = new MidtransApi();
+
+        // Return the value to returns.log
+        error_log($request->testTransactionStatusB2B($this->serverKey, '1109636026/status/b2b'), 3, "returns.log");
+        $this->assertNotNull($request->testTransactionStatusB2B($this->serverKey, '1109636026/status/b2b'));
     }
 }

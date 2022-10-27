@@ -38,7 +38,16 @@ class MidtransApi {
     }
 
     // Checking Transaction
-    public function transactionCheck(string $serverKey, string $endpoint){
+    public function testTransactionStatus(string $serverKey, string $endpoint){
+        $request = new Request();
+
+        $response = $request->req($serverKey, 'GET', $endpoint);
+
+        return $response;
+    }
+
+    // Checking Transaction
+    public function testTransactionStatusB2B(string $serverKey, string $endpoint){
         $request = new Request();
 
         $response = $request->req($serverKey, 'GET', $endpoint);
