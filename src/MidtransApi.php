@@ -19,8 +19,17 @@ class MidtransApi {
         return $response;
     }
 
-    // Checking Transaction
+    // Cancelling Transaction
     public function transactionCancel(string $serverKey, string $endpoint){
+        $request = new Request();
+
+        $response = $request->req($serverKey, 'POST', $endpoint);
+
+        return $response;
+    }
+
+    // Expiring Transaction
+    public function transactionExpire(string $serverKey, string $endpoint){
         $request = new Request();
 
         $response = $request->req($serverKey, 'POST', $endpoint);

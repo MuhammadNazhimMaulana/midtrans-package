@@ -61,6 +61,18 @@ final class TransactionTest extends TestCase
     }
 
     /**
+     * @group testTransactionExpire
+     */
+    public function testTransactionExpire()
+    {
+        $request = new MidtransApi();
+
+        // Return the value to returns.log
+        error_log($request->transactionExpire($this->serverKey, '1666767749/expire'), 3, "returns.log");
+        $this->assertNotNull($request->transactionExpire($this->serverKey, '1666767749/expire'));
+    }
+
+    /**
      * @group testTransactionStatus
      */
     public function testTransactionStatus()
