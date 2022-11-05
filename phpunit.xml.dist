@@ -1,6 +1,6 @@
 <phpunit bootstrap="./vendor/autoload.php">
   <testsuites>
-    <testsuite name="User">
+    <testsuite name="Transaction">
       <file>tests/TransactionTest.php</file>
     </testsuite>
   </testsuites>
