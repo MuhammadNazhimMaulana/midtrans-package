@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace Bonevian\Midtrans\Test;
 
 use PHPUnit\Framework\TestCase;
-use Bonevian\Midtrans\MidtransApi;
+use Bonevian\Midtrans\{MidtransApi, Config};
 
 final class TransactionTest extends TestCase
 {
     /**
      * @var string
      */
-    protected $serverKey;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -20,7 +19,7 @@ final class TransactionTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->serverKey = 'server_key';
+        Config::$serverKey = 'server_key';
     }
 
     /**
@@ -44,8 +43,8 @@ final class TransactionTest extends TestCase
         $payload = json_decode($json, true);
 
         // Return the value to returns.log
-        error_log($request->transactionCreate($this->serverKey, 'charge', $payload), 3, "returns.log");
-        $this->assertNotNull($request->transactionCreate($this->serverKey, 'charge', $payload));
+        error_log($request->transactionCreate(Config::$serverKey, 'charge', $payload), 3, "returns.log");
+        $this->assertNotNull($request->transactionCreate(Config::$serverKey, 'charge', $payload));
     }
 
     /**
@@ -56,8 +55,8 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->transactionCancel($this->serverKey, '1666772553/cancel'), 3, "returns.log");
-        $this->assertNotNull($request->transactionCancel($this->serverKey, '1666772553/cancel'));
+        error_log($request->transactionCancel(Config::$serverKey, '1666772553/cancel'), 3, "returns.log");
+        $this->assertNotNull($request->transactionCancel(Config::$serverKey, '1666772553/cancel'));
     }
 
     /**
@@ -68,8 +67,8 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->transactionExpire($this->serverKey, '1666767749/expire'), 3, "returns.log");
-        $this->assertNotNull($request->transactionExpire($this->serverKey, '1666767749/expire'));
+        error_log($request->transactionExpire(Config::$serverKey, '1666767749/expire'), 3, "returns.log");
+        $this->assertNotNull($request->transactionExpire(Config::$serverKey, '1666767749/expire'));
     }
 
     /**
@@ -80,8 +79,8 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->testTransactionStatus($this->serverKey, '1109636026/status'), 3, "returns.log");
-        $this->assertNotNull($request->testTransactionStatus($this->serverKey, '1109636026/status'));
+        error_log($request->testTransactionStatus(Config::$serverKey, '1109636026/status'), 3, "returns.log");
+        $this->assertNotNull($request->testTransactionStatus(Config::$serverKey, '1109636026/status'));
     }
 
     /**
@@ -92,7 +91,7 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->testTransactionStatusB2B($this->serverKey, '1109636026/status/b2b'), 3, "returns.log");
-        $this->assertNotNull($request->testTransactionStatusB2B($this->serverKey, '1109636026/status/b2b'));
+        error_log($request->testTransactionStatusB2B(Config::$serverKey, '1109636026/status/b2b'), 3, "returns.log");
+        $this->assertNotNull($request->testTransactionStatusB2B(Config::$serverKey, '1109636026/status/b2b'));
     }
 }
