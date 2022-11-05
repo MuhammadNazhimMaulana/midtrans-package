@@ -2,7 +2,7 @@
 
 namespace Bonevian\Midtrans;
 
-class Config {
+class MidtransConfig {
 
     public static $serverKey;
 
