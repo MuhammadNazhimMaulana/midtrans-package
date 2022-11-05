@@ -43,8 +43,8 @@ final class TransactionTest extends TestCase
         $payload = json_decode($json, true);
 
         // Return the value to returns.log
-        error_log($request->transactionCreate(MidtransConfig::$serverKey, 'charge', $payload), 3, "returns.log");
-        $this->assertNotNull($request->transactionCreate(MidtransConfig::$serverKey, 'charge', $payload));
+        error_log($request->create('charge', $payload), 3, "returns.log");
+        $this->assertNotNull($request->create('charge', $payload));
     }
 
     /**
@@ -55,8 +55,8 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->transactionCancel(MidtransConfig::$serverKey, '1666772553/cancel'), 3, "returns.log");
-        $this->assertNotNull($request->transactionCancel(MidtransConfig::$serverKey, '1666772553/cancel'));
+        error_log($request->cancel('1666772553/cancel'), 3, "returns.log");
+        $this->assertNotNull($request->cancel('1666772553/cancel'));
     }
 
     /**
@@ -67,8 +67,8 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->transactionExpire(MidtransConfig::$serverKey, '1666767749/expire'), 3, "returns.log");
-        $this->assertNotNull($request->transactionExpire(MidtransConfig::$serverKey, '1666767749/expire'));
+        error_log($request->expire('1666767749/expire'), 3, "returns.log");
+        $this->assertNotNull($request->expire('1666767749/expire'));
     }
 
     /**
@@ -79,8 +79,8 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->testTransactionStatus(MidtransConfig::$serverKey, '1109636026/status'), 3, "returns.log");
-        $this->assertNotNull($request->testTransactionStatus(MidtransConfig::$serverKey, '1109636026/status'));
+        error_log($request->checkStatus('1109636026/status'), 3, "returns.log");
+        $this->assertNotNull($request->checkStatus('1109636026/status'));
     }
 
     /**
@@ -91,7 +91,7 @@ final class TransactionTest extends TestCase
         $request = new MidtransApi();
 
         // Return the value to returns.log
-        error_log($request->testTransactionStatusB2B(MidtransConfig::$serverKey, '1109636026/status/b2b'), 3, "returns.log");
-        $this->assertNotNull($request->testTransactionStatusB2B(MidtransConfig::$serverKey, '1109636026/status/b2b'));
+        error_log($request->checkStatusB2B('1109636026/status/b2b'), 3, "returns.log");
+        $this->assertNotNull($request->checkStatusB2B('1109636026/status/b2b'));
     }
 }

@@ -2,55 +2,51 @@
 
 namespace Bonevian\Midtrans;
 
-use Bonevian\Midtrans\Request;
+use Bonevian\Midtrans\Repository\MidtransRepository;
 
 class MidtransApi {
 
     // Creating Transaction
-    public function transactionCreate(string $serverKey, string $endpoint, array $payload){
-        $request = new Request();
+    public function create( $endpoint, array $payload){
+        $request = new MidtransRepository();
 
-        $data = [
-            'json' => $payload
-        ];
-
-        $response = $request->req($serverKey, 'POST', $endpoint, $data);
+        $response = $request->transactionCreate($endpoint, $payload);
 
         return $response;
     }
 
     // Cancelling Transaction
-    public function transactionCancel(string $serverKey, string $endpoint){
-        $request = new Request();
+    public function cancel(string $endpoint){
+        $request = new MidtransRepository();
 
-        $response = $request->req($serverKey, 'POST', $endpoint);
+        $response = $request->transactionCancel($endpoint);
 
         return $response;
     }
 
     // Expiring Transaction
-    public function transactionExpire(string $serverKey, string $endpoint){
-        $request = new Request();
+    public function expire(string $endpoint){
+        $request = new MidtransRepository();
 
-        $response = $request->req($serverKey, 'POST', $endpoint);
-
-        return $response;
-    }
-
-    // Checking Transaction
-    public function testTransactionStatus(string $serverKey, string $endpoint){
-        $request = new Request();
-
-        $response = $request->req($serverKey, 'GET', $endpoint);
+        $response = $request->transactionExpire($endpoint);
 
         return $response;
     }
 
     // Checking Transaction
-    public function testTransactionStatusB2B(string $serverKey, string $endpoint){
-        $request = new Request();
+    public function checkStatus(string $endpoint){
+        $request = new MidtransRepository();
 
-        $response = $request->req($serverKey, 'GET', $endpoint);
+        $response = $request->transactionStatus($endpoint);
+
+        return $response;
+    }
+
+    // Checking Transaction
+    public function checkStatusB2B(string $endpoint){
+        $request = new MidtransRepository();
+
+        $response = $request->transactionStatusB2B($endpoint);
 
         return $response;
     }
